@@ -1,0 +1,59 @@
+{
+  "name": "can-ai-read",
+  "version": "0.1.0",
+  "description": "Check whether AI search engines (ChatGPT search, Perplexity, Claude, Google AI Overviews) can read your site: AI crawler rules in robots.txt, text without JavaScript, noindex, JSON-LD, llms.txt. CLI, GitHub Action and Node API. Zero dependencies.",
+  "type": "module",
+  "bin": {
+    "can-ai-read": "bin/can-ai-read.js"
+  },
+  "main": "./src/index.js",
+  "types": "./types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "bin",
+    "src",
+    "types",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "typecheck": "tsc --noEmit --strict --typeRoots ./node_modules/@types --lib es2022,dom types/index.d.ts"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "ai-crawler",
+    "robots.txt",
+    "llms.txt",
+    "gptbot",
+    "oai-searchbot",
+    "perplexitybot",
+    "claudebot",
+    "ai-overviews",
+    "geo",
+    "aeo",
+    "ai-seo",
+    "ai-visibility",
+    "seo",
+    "json-ld",
+    "github-action",
+    "cli"
+  ],
+  "homepage": "https://github.com/founder-ventures/can-ai-read#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/founder-ventures/can-ai-read.git"
+  },
+  "bugs": {
+    "url": "https://github.com/founder-ventures/can-ai-read/issues"
+  },
+  "license": "MIT"
+}

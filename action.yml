@@ -1,0 +1,65 @@
+name: "can-ai-read: AI crawler readiness"
+description: "Check whether ChatGPT search, Perplexity, Claude and Google AI Overviews can read a URL. Fails a pull request when a change makes it worse."
+author: "Rankwise"
+branding:
+  icon: "eye"
+  color: "blue"
+
+inputs:
+  url:
+    description: "URL to check, for example your preview deployment."
+    required: true
+  baseline:
+    description: "Optional URL to compare with, usually production. With a baseline, the step fails only on regressions."
+    required: false
+    default: ""
+  pages:
+    description: "Extra pages to check besides the URL (0 to 8). Default 2, or 1 with a baseline."
+    required: false
+    default: ""
+  paths:
+    description: "Comma-separated paths to check instead of discovering them, for example /pricing,/blog/launch."
+    required: false
+    default: ""
+  fail-under:
+    description: "Fail when the score is below this number (0 to 100)."
+    required: false
+    default: ""
+  headers:
+    description: "Extra request headers for your site, one 'Name: value' per line. Use it for preview protection bypass tokens. Values are masked in logs."
+    required: false
+    default: ""
+  preview:
+    description: "auto, true or false. When true, X-Robots-Tag noindex headers are not counted. auto turns it on for *.vercel.app, *.netlify.app and *.pages.dev."
+    required: false
+    default: "auto"
+  comment:
+    description: "Post or update one comment on the pull request with the report. Needs 'pull-requests: write' permission."
+    required: false
+    default: "false"
+  fail:
+    description: "Fail the step on errors, regressions or a score below fail-under. Set to false to report only."
+    required: false
+    default: "true"
+  github-token:
+    description: "Token used for the pull request comment."
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  score:
+    description: "Score from 0 to 100 for the URL."
+  errors:
+    description: "Number of checks with errors."
+  warnings:
+    description: "Number of checks with warnings."
+  baseline-score:
+    description: "Score for the baseline URL, when one was given."
+  regressions:
+    description: "Number of checks that got worse than the baseline."
+  report-path:
+    description: "Path to the full JSON report."
+
+runs:
+  using: "node24"
+  main: "action/index.js"

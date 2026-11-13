@@ -1,0 +1,14 @@
+User-agent: GPTBot
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: *
+Disallow: /admin/
+
+Sitemap: https://example.com/sitemap.xml
